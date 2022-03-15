@@ -122,5 +122,5 @@ users.acl
 
 
 # Custom rules
-app/static
-app/media
+app/files/
+
