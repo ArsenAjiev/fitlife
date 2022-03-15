@@ -25,9 +25,11 @@ which pip3.8
 
 ### Install packages
 ```shell
-pip install Django==4.0.2
+pip install Django
 
-pip install psycopg2-binary==2.9.3
+pip install psycopg2-binary
+
+pip install gunicorn
 
 ```
 
@@ -54,6 +56,47 @@ pip freeze > requirements.txt
 pip install -r requirements.txt
 ```
 
+### How to access environment variable values
+      
+```shell
+
+(venv) my_pc....../fitlife$ python
+Python 3.8.10 (default, Nov 26 2021, 20:14:08) 
+[GCC 9.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import os
+>>> print(os.environ['SECRET_KEY'])
+django-insecure-i5dfie@d1m*%-$rlk^%d@!=tghm)qxt1hcck9q^zn0aa=+_y10
+
+    Or you can see a list of all the environment variables using:
+>>> os.environ
 
 
+```
 
+# Docker
+
+
+```shell
+# clear ALL data !!! 
+docker system prune -a
+docker volume prune
+
+```
+```shell
+# show information 
+docker ps -a
+docker images
+docker volume ls
+
+```
+
+### Run all at once
+
+```shell
+docker-compose up -d --build --force-recreate
+```
+
+```shell
+docker-compose exec app python manage.py createsuperuser
+```

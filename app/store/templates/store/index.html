@@ -1,0 +1,22 @@
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'store/img/image.jpg'%}">
+        <link href="{% static 'store/css/style.css' %}" rel="stylesheet">
+
+    <title>Title</title>
+</head>
+<body>
+<h1>  Index Home page </h1>
+<p> <a href="{% url 'store_app:store' %}" > store </a> </p>
+<p> <a href="{% url 'store_app:cart' %}" > cart </a> </p>
+<p> <a href="{% url 'store_app:checkout' %}" > checkout </a> </p>
+
+
+</body>
+</html>
