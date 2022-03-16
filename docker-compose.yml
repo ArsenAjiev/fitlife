@@ -21,8 +21,8 @@ services:
       - 8000:8000
     volumes:
       - ./app:/usr/src/app
-      - static-files:/usr/src/app/static
-      - media-files:/usr/src/app/media
+      - static-files:/usr/src/app/files/static
+      - media-files:/usr/src/app/files/media
     env_file:
       - ./docker/app/.env
     depends_on:
