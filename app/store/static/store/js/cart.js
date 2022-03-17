@@ -8,6 +8,7 @@ for ( i = 0; i < updateBtns.length; i++) {
         if (user === 'AnonymousUser') {
             console.log('User not auth')
         }else {
+			console.log('User is auth!!!')
             updateUserOrder(productId, action)
 
         }
@@ -28,9 +29,10 @@ function updateUserOrder(productId, action){
 			body:JSON.stringify({'productId':productId, 'action':action})
 		})
 		.then((response) => {
-		   return response.json();
+			return response.json();
 		})
 		.then((data) => {
-		    console.log('data', data)
+		    console.log('data:', data)
+			location.reload()
 		});
 }
