@@ -109,3 +109,10 @@ docker-compose up -d --build --force-recreate
 ```shell
 docker-compose exec app python manage.py createsuperuser
 ```
+
+### Create some products
+```shell
+python manage.py create
+
+```
+

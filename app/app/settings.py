@@ -29,6 +29,12 @@ DEBUG = os.getenv('DEBUG', False)
 
 ALLOWED_HOSTS = ['*']
 
+# Auth
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'
+
+
 
 # Application definition
 
@@ -58,7 +64,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
