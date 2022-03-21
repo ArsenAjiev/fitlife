@@ -55,6 +55,15 @@ pip freeze > requirements.txt
 
 pip install -r requirements.txt
 ```
+###Run db migrations
+
+```shell
+python manage.py makemigrations
+python manage.py migrate
+```
+
+
+
 
 ### How to access environment variable values
       
