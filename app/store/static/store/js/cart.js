@@ -36,10 +36,10 @@ function addCookieItem(productId, action) {
 			delete cart[productId];
 		}
 	}
-	console.log('CART1:', cart)
+	console.log('CART_js:', cart)
 	document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
 
-	// location.reload()
+	location.reload()
 }
 
 
