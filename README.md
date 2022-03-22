@@ -109,6 +109,25 @@ docker-compose up -d --build --force-recreate
 ```shell
 docker-compose exec app python manage.py createsuperuser
 ```
+--------------------------------------------------------
+# Run server without docker (use sqlite)
+
+### Create and install requirements.txt in app directory. 
+```shell
+pip install -r requirements.txt
+```
+
+###Run db migrations
+```shell
+python manage.py migrate
+```
+### Create superuser. 
+```shell
+python manage.py createsuperuser
+```
+
+### Create  "Customer"  in admin interface (for superuser)
+
 
 ### Create some products
 ```shell
