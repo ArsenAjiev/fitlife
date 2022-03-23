@@ -1,0 +1,100 @@
+{% extends 'main.html' %}
+{% load static %}
+
+   {% block content %}
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="{% static 'store/img/garant.png' %}" height="240" >
+            <div class="card-body">
+              <p class="card-text">Это более широкая карточка с вспомогательным текстом ниже как естественный ввод
+                  к дополнительному контенту. Этот контент немного длиннее.</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="{% static 'store/img/done.png' %}" height="240" >
+            <div class="card-body">
+              <p class="card-text">Это более широкая карточка с вспомогательным текстом ниже как естественный ввод
+                  к дополнительному контенту. Этот контент немного длиннее.</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="{% static 'store/img/bottom-02.png' %}" height="240" >
+            <div class="card-body">
+              <p class="card-text">Это более широкая карточка с вспомогательным текстом ниже как естественный ввод
+                  к дополнительному контенту. Этот контент немного длиннее.</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+
+<div class="container marketing">
+
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-Заголовок">First featurette Заголовок. <span class="text-muted">It’ll blow your mind.</span></h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+      <div class="col-md-5">
+                 <img src="{% static 'store/img/placeholder.png' %}" height="255" >
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-Заголовок">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+                       <img src="{% static 'store/img/placeholder.png' %}" height="255" >
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-Заголовок">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+      <div class="col-md-5">
+                     <img src="{% static 'store/img/placeholder.png' %}" height="255" >
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div>
+
+
+
+  {% endblock content %}

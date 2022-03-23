@@ -2,8 +2,70 @@
 {% load static %}
 
    {% block content %}
+<div class="card">
+<img src="{% static 'store/img/walpaper.jpg' %}" height="240" >
+</div>
 
-   <h1>Fit life main page</h1>
+<div class="card mb-3 text-center">
+      <h1 class="display-4 font-italic ">Фитнес в контексте жизни!</h1>
+      <p class="lead my-3">В этом разделе будет описание фитнес центра,
+          основные услуги, адреса, новости и еще много полезной информации....</p>
+       <p>  <a class="btn btn-light" href="{% url 'about' %}" style="margin-left: 3px"> Продолжить чтение </a></p>
+</div>
+
+ <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">Покупка  абонемента</h1>
+  <p class="lead"> Цены на абонементы для посещения тренажерного зала</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="col">
+      <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Разовое посещение </h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title"><span>&#8381;</span>15 </h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Описание  </li>
+        </ul>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Купить</button>
+      </div>
+    </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Абонемент на месяц </h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title"><span>&#8381;</span>120 <small class="text-muted">/ мес.</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Описание  </li>
+        </ul>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Купить</button>
+      </div>
+    </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Абонемент на 8 занятий </h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title"><span>&#8381;</span>80  </h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Описание  </li>
+        </ul>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Купить</button>
+      </div>
+    </div>
+    </div>
+
+
+  </div>
+
+
 
   {% endblock content %}
 

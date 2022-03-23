@@ -129,7 +129,7 @@ python manage.py createsuperuser
 ### Create  "Customer"  in admin interface (for superuser)
 
 
-### Create some products
+### Create some products use management command
 ```shell
 python manage.py create
 
