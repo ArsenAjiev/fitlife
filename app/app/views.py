@@ -30,3 +30,25 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'registration/register.html', {'form': form})
 
+
+# информация о сайте
+def about(request):
+    # объект cartItems нужен для отображения количества товаров на главной странице
+    data = cart_data(request)
+    cartItems = data['cartItems']
+    context = {"cartItems": cartItems}
+    return render(request, 'about.html', context)
+
+
+def profile(request):
+    data = cart_data(request)
+    cartItems = data['cartItems']
+
+    customer = request.user.customer
+    order = Order.objects.filter(customer=customer, complete=True)
+    items = OrderItem.objects.filter(order__customer=customer)
+
+
+    context = { 'order': order, 'cartItems': cartItems, 'items': items}
+    return render(request, 'profile.html', context)
+
