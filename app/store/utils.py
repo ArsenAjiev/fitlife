@@ -10,10 +10,10 @@ def cookie_cart(request):
     print('cart_view', cart)
     items = []
     order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
-    cartItems = order['get_cart_items']
+    cart_items = order['get_cart_items']
     for i in cart:
         try:
-            cartItems += cart[i]['quantity']
+            cart_items += cart[i]['quantity']
             product = Product.objects.get(id=i)
             total = (product.price * cart[i]['quantity'])
             order['get_cart_total'] += total
@@ -33,7 +33,7 @@ def cookie_cart(request):
                 order['shipping'] = True
         except:
             pass
-    return {'cartItems': cartItems, 'order': order, 'items': items}
+    return {'cart_items': cart_items, 'order': order, 'items': items}
 
 
 def cart_data(request):
@@ -41,15 +41,15 @@ def cart_data(request):
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
-        cartItems = order.get_cart_items
+        cart_items = order.get_cart_items
         print(customer)
     else:
         cookieData = cookie_cart(request)
-        cartItems = cookieData['cartItems']
+        cart_items = cookieData['cart_items']
         order = cookieData['order']
         items = cookieData['items']
 
-    return {'cartItems': cartItems, 'order': order, 'items': items}
+    return {'cart_items': cart_items, 'order': order, 'items': items}
 
 
 def guest_order(request, data):

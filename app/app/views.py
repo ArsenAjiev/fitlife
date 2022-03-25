@@ -9,8 +9,8 @@ from django.contrib.auth import login
 def index(request):
     # объект cartItems нужен для отображения количества товаров на главной странице
     data = cart_data(request)
-    cartItems = data['cartItems']
-    context = {"cartItems": cartItems}
+    cart_items = data['cart_items']
+    context = {"cart_items": cart_items}
     return render(request, 'index.html', context)
 
 
@@ -21,7 +21,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            # одновременное создание объекта Customer, для совершения покупок
+            # одновременное автоматическое создание объекта Customer, для совершения покупок
             Customer.objects.create(user=request.user,
                                     name=form.cleaned_data.get('username'),
                                     email=form.cleaned_data.get('email'))
@@ -35,20 +35,19 @@ def register(request):
 def about(request):
     # объект cartItems нужен для отображения количества товаров на главной странице
     data = cart_data(request)
-    cartItems = data['cartItems']
-    context = {"cartItems": cartItems}
+    cart_items = data['cart_items']
+    context = {"cart_items": cart_items}
     return render(request, 'about.html', context)
 
 
 def profile(request):
     data = cart_data(request)
-    cartItems = data['cartItems']
+    cart_items = data['cart_items']
 
     customer = request.user.customer
     order = Order.objects.filter(customer=customer, complete=True)
     items = OrderItem.objects.filter(order__customer=customer)
 
-
-    context = { 'order': order, 'cartItems': cartItems, 'items': items}
+    context = {'order': order, 'cart_items': cart_items, 'items': items}
     return render(request, 'profile.html', context)
 

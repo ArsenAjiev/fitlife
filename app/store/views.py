@@ -3,67 +3,66 @@ from store.models import *
 from django.http import JsonResponse
 import json
 import datetime
-from store.utils import cookie_cart, cart_data, guest_order
+from store.utils import cart_data, guest_order
 
 
 def store(request):
-
     data = cart_data(request)
-    cartItems = data['cartItems']
+    cart_items = data['cart_items']
 
     products = Product.objects.all()
-    context = {'products': products, "cartItems": cartItems}
+    context = {'products': products, "cart_items": cart_items}
     return render(request, 'store/store.html', context)
 
 
 def cart(request):
 
     data = cart_data(request)
-    cartItems = data['cartItems']
+    cart_items = data['cart_items']
     order = data['order']
     items = data['items']
 
-    context = {'items': items, 'order': order, 'cartItems': cartItems}
+    context = {'items': items, 'order': order, 'cart_items': cart_items}
     return render(request, 'store/cart.html', context)
 
 
 def checkout(request):
 
     data = cart_data(request)
-    cartItems = data['cartItems']
+    cart_items = data['cart_items']
     order = data['order']
     items = data['items']
 
-    context = {'items': items, 'order': order, 'cartItems': cartItems}
+    context = {'items': items, 'order': order, 'cart_items': cart_items}
     return render(request, 'store/checkout.html', context)
 
 
-def updateItem(request):
+# Получаем данные из функции JS updateUserOrder.
+# Если нет экземпляра модели 'Order', то создается новый.
+# На основе полученных данных создаем экземпляры модели 'OrderItem'.
+def update_item(request):
     data = json.loads(request.body)
-    productId = data['productId']
+    product_id = data['product_id']
     action = data['action']
-    print(action, productId)
-    print(data)
 
     customer = request.user.customer
-    product = Product.objects.get(id=productId)
+    product = Product.objects.get(id=product_id)
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
-    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+    order_item, created = OrderItem.objects.get_or_create(order=order, product=product)
 
-    print(customer, product)
-
+    # изменение значений в поле 'quantity' модели 'OrderItem'
     if action == 'add':
-        orderItem.quantity = (orderItem.quantity + 1)
+        order_item.quantity = (order_item.quantity + 1)
     elif action == 'remove':
-        orderItem.quantity = (orderItem.quantity - 1)
+        order_item.quantity = (order_item.quantity - 1)
+    order_item.save()
+    if order_item.quantity <= 0:
+        order_item.delete()
+    return JsonResponse('Item was added!', safe=False)
 
-    orderItem.save()
 
-    if orderItem.quantity <= 0:
-        orderItem.delete()
-    return JsonResponse('Item was added_111', safe=False)
-
-def processOrder(request):
+# Получаем данные из функции JS submitFormData.
+def process_order(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
 
