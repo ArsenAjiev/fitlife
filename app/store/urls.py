@@ -15,5 +15,7 @@ urlpatterns = [
     path('update_item/', update_item, name="update_item"),
     #  ссылка на контроллер, который обрабатывает данные, полученные из функции "submitFormData" script checkout.html
     path('process_order/', process_order, name="process_order"),
+    #
+    path('my_orders/<int:order_id>/', my_orders, name='my_orders'),
 
 ]

@@ -45,9 +45,10 @@ def profile(request):
     cart_items = data['cart_items']
 
     customer = request.user.customer
-    order = Order.objects.filter(customer=customer, complete=True)
+    order = Order.objects.filter(customer=customer, complete=True).order_by('-date_ordered')
     items = OrderItem.objects.filter(order__customer=customer)
 
     context = {'order': order, 'cart_items': cart_items, 'items': items}
     return render(request, 'profile.html', context)
+
 
