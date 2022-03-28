@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+           <h1> Архив покупок </h1>
+
+<hr>
+
+            <a  class="btn btn-outline-dark" href="{% url 'profile'  %}">
+                Back to Profile
+            </a>
+<hr>
+
+
+  <p> Номер заказа: {{ order_item.pk }} </p>
+  <p> Имя пользователя: {{ order_item.customer }}</p>
+  <p> Дата заказа : {{ order_item.date_ordered | date:"d.m.Y H:i:s" }} </p>
+  <p> Общая сумма заказа : $ {{ order_item.get_cart_total }} </p>
+
+    <hr>
+
+<div class="box-element">
+				<div class="cart-row">
+                    <div style="flex:2"> <strong> Item</strong> </div>
+					<div style="flex:2"><strong>Image</strong></div>
+
+					<div style="flex:1"><strong>Price</strong></div>
+					<div style="flex:1"><strong>Quantity</strong></div>
+				</div>
+
+                {% for item in order_item.orderitem_set.all %}
+
+				<div class="cart-row">
+    				<div style="flex:2"><p>{{ item.product.name }}</p></div>
+					<div style="flex:2"><img class="row-image" src="{{ item.product.imageURL }}"></div>
+
+					<div style="flex:1"><p>${{ item.product.price| floatformat:2 }}</p></div>
+					<div style="flex:1">
+						<p class="quantity">{{item.quantity}}</p>
+
+					</div>
+
+				</div>
+                {% endfor %}
+			</div>
+
+<hr>
+
+
+
+
+
+
+{% endblock content %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from store.models import *
 from django.http import JsonResponse
 import json
@@ -94,3 +94,16 @@ def process_order(request):
     print(transaction_id)
 
     return JsonResponse('Payment complete', safe=False)
+
+
+def my_orders(request, order_id):
+    data = cart_data(request)
+    cart_items = data['cart_items']
+
+    customer = request.user.customer
+    order = Order.objects.filter(customer=customer, complete=True)
+    items = OrderItem.objects.filter(order__customer=customer)
+
+    order_item = get_object_or_404(Order, pk=order_id, customer=customer)
+    context = {'order_item': order_item, 'order': order, 'cart_items': cart_items, 'items': items}
+    return render(request, 'store/my_orders.html', context)

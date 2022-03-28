@@ -2,16 +2,99 @@
 {% load static %}
 
    {% block content %}
-<div class="card">
-<img src="{% static 'store/img/walpaper.jpg' %}" height="240" >
-</div>
+{#<div class="card">#}
+{#<img src="{% static 'store/img/walpaper.jpg' %}" height="240" >#}
+{#</div>#}
 
-<div class="card mb-3 text-center">
-      <h1 class="display-4 font-italic ">Фитнес в контексте жизни!</h1>
-      <p class="lead my-3">В этом разделе будет описание фитнес центра,
-          основные услуги, адреса, новости и еще много полезной информации....</p>
-       <p>  <a class="btn btn-light" href="{% url 'about' %}" style="margin-left: 3px"> Продолжить чтение </a></p>
-</div>
+{#<div class="card mb-3 text-center">#}
+{#      <h1 class="display-4 font-italic ">Фитнес в контексте жизни!</h1>#}
+{#      <p class="lead my-3">В этом разделе будет описание фитнес центра,#}
+{#          основные услуги, адреса, новости и еще много полезной информации....</p>#}
+{#       <p>  <a class="btn btn-light" href="{% url 'about' %}" style="margin-left: 3px"> Продолжить чтение </a></p>#}
+{#</div>#}
+
+
+<hr>
+<!-- Start Banner Hero -->
+    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="{% static 'store/img/fitLife_enter.jpg' %}" alt="">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left align-self-center">
+                                <h1 class="h1 text-success"><b>Fitlife </b> Современный фитнес центр</h1>
+
+                                <p>
+                        Приглашаем всех, кто хочет присоединиться к числу наших довольных клиентов,
+                        в фитнес центр «Fitlife» прямо в центре столицы.
+                        Здесь Вас ждут профессионально составленные программы занятий на любой вкус.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="{% static 'store/img/24-7.png' %}" alt="">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <h1 class="h1">Работаем круглосуточно.</h1>
+                                <h3 class="h2">Тренируйся в любое удобное для тебя время.</h3>
+                                <p>
+                               У нас нет ограничений по возрасту в разумных пределах.
+                                У нас удобный график работы! Приходите с 07.00 до 24.00 по будням и с 09.00 до 22.00 по выходным и праздникам.
+                                <strong> Мы Вам рады!</strong>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="{% static 'store/img/gym_room.jpg' %}" alt="">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <h1 class="h1">Современные тренажеры.</h1>
+                                <h3 class="h2">Путь к идеальной форме.</h3>
+                                <p>
+                Тренировки проводятся в залах, оборудованных в соответствии
+                с требованиями безопасности и современными стандартами.
+                Попробуйте свои силы на разных снарядах, которые позволят развить каждую группу мышц организма
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
+            <i class="fas fa-chevron-right"></i>
+        </a>
+    </div>
+    <!-- End Banner Hero -->
+
+<hr>
+
+
 
  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
   <h1 class="display-4">Покупка  абонемента</h1>
