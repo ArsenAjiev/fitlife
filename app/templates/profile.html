@@ -3,15 +3,39 @@
 
 {% block content %}
 
- <h1> Архив покупок </h1>
 
-  {% for item in order %}
-           <a  class="btn btn-outline-dark count"  href="{% url 'store_app:my_orders' item.id  %}">
-               | Заказ: {{ item.id }} от {{ item.date_ordered | date:"d.m.Y" }}
-            </a>
-  {% endfor %}
+    <div class="container py-5">
+        <div class="row">
 
-<hr>
-<hr>
+         {% include 'left_side.html' %}
+
+            <div class="col-lg-9">
+
+                {% block profile %}
+<!-- Start Categories of The Month -->
+    <section class="container py-5">
+        <div class="row text-center pt-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Главная страница профиля</h1>
+                <p>
+                    Общая информация о профиле
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- End Categories of The Month -->
+
+                {% endblock %}
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
 
 {% endblock content %}

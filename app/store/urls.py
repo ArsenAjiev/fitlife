@@ -17,5 +17,7 @@ urlpatterns = [
     path('process_order/', process_order, name="process_order"),
     #
     path('my_orders/<int:order_id>/', my_orders, name='my_orders'),
+    #
+    path('purchase_archive/', purchase_archive, name='purchase_archive'),
 
 ]

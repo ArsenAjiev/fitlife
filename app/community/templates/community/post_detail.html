@@ -1,0 +1,88 @@
+{% extends 'main.html' %}
+{% load static %}
+
+   {% block content %}
+
+
+    <!-- Start Featured Product -->
+    <section>
+        <div class="container py-2">
+            <div class="row text-center py-3">
+                <div class="col-lg-6 m-auto">
+                    <h1 class="h1">Fitlife community</h1>
+                    <p>
+                        Здесь Вы можете делиться своими тренировками, личными достижениями, планами питания и просто хорошими
+                        и интересными событиями из мира спорта с остальными участниками сообщества!
+                    </p>
+                    <a  class="btn btn-outline-secondary" href="{% url 'community:main_page' %}"> Вернуться в Fitlife community </a>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End Featured Product -->
+
+
+
+
+
+
+    <!-- Start Content -->
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-2">
+                <h1 class="h2 pb-4">Tags: </h1>
+
+              {% for tag in most_comm_tags %}
+              <a class="btn btn-outline-success" href="{% url 'community:post_by_tag' tag.slug %}" role="button">{{ tag.name }}</a>
+               {% endfor %}
+
+                <hr>
+                <a  class="btn btn-outline-secondary" href="{% url 'community:main_page' %}"> Показать все посты </a>
+                <hr>
+                <button type="button" class="btn btn-outline-secondary" >Создать пост</button>
+            </div>
+
+
+            <div class="col-lg-10">
+                <div class="row">
+
+
+                    <div>
+                        <div class="card mb-4 product-wap rounded-0">
+                            <div class="card-body">
+                                 <p> <strong> Title: </strong> {{ post.title }} </p>
+                            </div>
+                            <div class="card rounded-0">
+
+                                <img class="card-img rounded-0 img-fluid" src="{{ post.image.url }}">
+                            </div>
+                            <div class="card-body">
+                                 <p> {{ post.text }}</p>
+                                       </div>
+                            <div class="card-body">
+                                 <p> <strong>Author: </strong> {{ post.author }} </p>
+                                <p> <strong>Date:  </strong> {{ post.created | date:"d-m-Y H:i:s" }} </p>
+                                 <p> <strong>Tags: </strong>
+                                  {% for tag in post.tags.all %}
+                                       <a class="btn btn-outline-success" href="#" role="button">{{ tag.name }}</a>
+                                  {% endfor %}
+
+                                 </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Content -->
+
+
+  {% endblock content %}
