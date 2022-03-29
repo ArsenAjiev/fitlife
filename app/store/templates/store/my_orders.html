@@ -1,13 +1,15 @@
-{% extends 'main.html' %}
+{% extends 'profile.html' %}
 {% load static %}
-{% block content %}
 
-           <h1> Архив покупок </h1>
+
+
+{% block profile %}
+           <h1> Сведения о покупке </h1>
 
 <hr>
 
-            <a  class="btn btn-outline-dark" href="{% url 'profile'  %}">
-                Back to Profile
+            <a  class="btn btn-outline-dark" href="{% url 'store_app:purchase_archive'  %}">
+                Back to purchase archive
             </a>
 <hr>
 
@@ -48,7 +50,12 @@
 
 
 
+{% endblock %}
 
 
 
-{% endblock content %}
+
+
+
+
+

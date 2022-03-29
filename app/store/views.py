@@ -107,3 +107,15 @@ def my_orders(request, order_id):
     order_item = get_object_or_404(Order, pk=order_id, customer=customer)
     context = {'order_item': order_item, 'order': order, 'cart_items': cart_items, 'items': items}
     return render(request, 'store/my_orders.html', context)
+
+
+def purchase_archive(request):
+    data = cart_data(request)
+    cart_items = data['cart_items']
+
+    customer = request.user.customer
+    order = Order.objects.filter(customer=customer, complete=True).order_by('-date_ordered')
+    items = OrderItem.objects.filter(order__customer=customer)
+
+    context = {'order': order, 'cart_items': cart_items, 'items': items}
+    return render(request, 'store/purchase_archive.html', context)

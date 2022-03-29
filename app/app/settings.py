@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'store',
+    'community',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -73,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'community.middlewares.tags_context_processor',
             ],
         },
     },
@@ -138,7 +142,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATICFILES_DIRS = []
+STATICFILES_DIRS = [
+    BASE_DIR / "static-user"
+]
 
 STATIC_ROOT = BASE_DIR / "files" / "static"
 STATIC_URL = "/static/"

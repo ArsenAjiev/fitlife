@@ -29,6 +29,7 @@ urlpatterns = [
 
 
     path('store/', include('store.urls')),
+    path('community/', include('community.urls')),
 
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/register/', register, name='register'),
