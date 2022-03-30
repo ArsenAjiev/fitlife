@@ -42,7 +42,8 @@
                 <hr>
                 <a  class="btn btn-outline-secondary" href="{% url 'community:main_page' %}"> Показать все посты </a>
                 <hr>
-                <button type="button" class="btn btn-outline-secondary" >Создать пост</button>
+
+                <a  class="btn btn-outline-secondary" href="{% url 'community:create_post' %}"> Создать пост </a>
             </div>
 
 
@@ -52,18 +53,22 @@
             {% for item in post %}
                     <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0">
-                            <div class="card-body">
+                            <div class="card-body" style="height: 102px">
                                  <p> {{ item.title }} </p>
                             </div>
                             <div class="card rounded-0">
 
-                                <img class="card-img rounded-0 img-fluid" src="{{ item.image.url }}">
+                                {% if item.image %}
+                                <img class="thumbnail" src="{{ item.image.url }}">
+                                {% else %}
+                                <img class="thumbnail" src="{% static '/img/no-image-available.jpg' %}">
+                                {% endif %}
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" style="height: 159px">
                                  <p> {{ item.text|safe|linebreaks|truncatewords:"5" }}</p>
                          <a  class="btn btn-outline-secondary" href="{{ item.get_absolute_url }}"> Читать далее </a>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body"style="height: 200px">
                                  <p> <strong>Author: </strong> {{ item.author }} </p>
                                 <p> <strong>Date:  </strong> {{ item.created | date:"d-m-Y H:i:s" }} </p>
                                  <p> <strong>Tags: </strong>

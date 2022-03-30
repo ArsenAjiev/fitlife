@@ -17,8 +17,8 @@
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                         <ul id="collapseTwo" class="collapse list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#">Показать мои посты</a></li>
-                            <li><a class="text-decoration-none" href="#">Создать новый пост</a></li>
+                            <li><a class="text-decoration-none" href="{% url 'community:my_posts' %}">Показать мои посты</a></li>
+                            <li><a class="text-decoration-none" href="{% url 'community:create_post' %}">Создать новый пост</a></li>
                         </ul>
                     </li>
                     <li class="pb-3">
@@ -35,6 +35,12 @@
                 </ul>
                 <hr>
                 <h1 class="h2 pb-4">Tags</h1>
-                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, recusandae?</p>
-
+                <p>
+             {% for tag in most_comm_tags %}
+                   <a class="btn btn-outline-success" href="{% url 'community:post_by_tag' tag.slug %}" role="button">{{ tag.name }}</a>
+             {% endfor %}
+                </p>
+                <hr>
+                 <a  class="btn btn-outline-secondary" href="{% url 'community:create_post' %}"> Создать пост </a>
+                <a  class="btn btn-outline-secondary" href="{% url 'community:my_posts' %}"> Перейти в мои посты </a>
             </div>
