@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from app.views import index, register, about, profile
+from core.views import register
 
 from django.conf.urls.static import static
 from django.conf import settings
@@ -23,13 +23,13 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
-    path('about/', about, name='about'),
-    path('profile/', profile, name='profile'),
-
-
+    # главная страница сайта
+    path('', include('core.urls')),
+    # магазин
     path('store/', include('store.urls')),
+    # сообщество - создание и просмотр постов
     path('community/', include('community.urls')),
+
 
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/register/', register, name='register'),

@@ -14,3 +14,9 @@ class PostForm(forms.ModelForm):
             # важно при загрузке изображения!!!
             'image': forms.FileInput(attrs={'class': 'input-image-control'})
         }
+
+
+# add comment form
+class AddCommentForm(forms.Form):
+    text = forms.CharField(label="Введите комментарий", widget=forms.TextInput(attrs={'class': 'form-control'}))
+
