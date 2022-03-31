@@ -9,6 +9,8 @@ urlpatterns = [
     path('', main_page, name="main_page"),
     path('tags/<slug:tag_slug>/', TagIndexView.as_view(), name='post_by_tag'),
     path('post_detail/<post_pk>/', post_detail, name='post_detail'),
+    path('create_post/', CreatePost.as_view(), name='create_post'),
+    path('my_posts/', my_posts, name='my_posts'),
 
 
 

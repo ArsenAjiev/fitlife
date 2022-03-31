@@ -15,6 +15,7 @@
                         и интересными событиями из мира спорта с остальными участниками сообщества!
                     </p>
                     <a  class="btn btn-outline-secondary" href="{% url 'community:main_page' %}"> Вернуться в Fitlife community </a>
+                    <a  class="btn btn-outline-secondary" href="{% url 'community:my_posts' %}"> Перейти в мои посты </a>
 
                 </div>
             </div>
@@ -43,7 +44,7 @@
                 <hr>
                 <a  class="btn btn-outline-secondary" href="{% url 'community:main_page' %}"> Показать все посты </a>
                 <hr>
-                <button type="button" class="btn btn-outline-secondary" >Создать пост</button>
+               <a  class="btn btn-outline-secondary" href="{% url 'community:create_post' %}"> Создать пост </a>
             </div>
 
 
@@ -58,7 +59,11 @@
                             </div>
                             <div class="card rounded-0">
 
+                                {% if post.image %}
                                 <img class="card-img rounded-0 img-fluid" src="{{ post.image.url }}">
+                                {% else %}
+                                <img class="card-img rounded-0 img-fluid" src="{% static '/img/no-image-available.jpg' %}">
+                                {% endif %}
                             </div>
                             <div class="card-body">
                                  <p> {{ post.text }}</p>
@@ -68,7 +73,7 @@
                                 <p> <strong>Date:  </strong> {{ post.created | date:"d-m-Y H:i:s" }} </p>
                                  <p> <strong>Tags: </strong>
                                   {% for tag in post.tags.all %}
-                                       <a class="btn btn-outline-success" href="#" role="button">{{ tag.name }}</a>
+                                        <a class="btn btn-outline-success" href="{% url 'community:post_by_tag' tag.slug %}" role="button">{{ tag.name }}</a>
                                   {% endfor %}
 
                                  </p>
