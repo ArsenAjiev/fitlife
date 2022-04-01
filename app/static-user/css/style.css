@@ -109,3 +109,7 @@ h1,h2,h3,h4,h5,h6{
 counter-increment: heading; /* Указываем идентификатор счетчика */
 content: "№ " counter(heading) ". "; /* Выводим текст перед содержимым тега <h2> */
 }
+
+.about_color {
+	background-color: rgba(27, 138, 48, 0.69);
+}

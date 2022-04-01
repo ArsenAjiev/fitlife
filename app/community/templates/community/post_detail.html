@@ -76,6 +76,35 @@
                                         <a class="btn btn-outline-success" href="{% url 'community:post_by_tag' tag.slug %}" role="button">{{ tag.name }}</a>
                                   {% endfor %}
 
+                            {% if post.post.all %}
+
+                                    <h5> Comments: </h5>
+                                  {% for comm in post.post.all %}
+                                      {{ comm.author }} || {{ comm.created | date:"d-m-Y H:i:s" }} || Time has passed: {{ comm.created | timesince }}
+                                      <h6>{{ comm.text }}</h6>
+                                      <h6>id коментария - {{ comm.pk }}</h6>
+
+                                      {# кнопка видна только для автора коментария#}
+                                      {% if user.is_authenticated and user == comm.author %}
+                                      <a href="{% url 'community:delete_comment' comm.pk %}"> <button class="btn btn-outline-danger"> DELETE Comment</button></a>
+                                      {% endif %}
+                                      <hr>
+
+                                  {% endfor %}
+
+                            {% else %}
+                                <h3> No comments</h3>
+                            {% endif %}
+
+                                {#  коментарии могут оставлять только авторизированные пользователи #}
+                                {% if user.is_authenticated %}
+                                 <form method="post">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                        <button type="submit" class=" btn btn-outline-success"> Add comment</button>
+                                </form>
+                                {% endif %}
+
                                  </p>
                             </div>
                         </div>
