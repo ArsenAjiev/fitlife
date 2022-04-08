@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'community',
     'taggit',
     'core',
+    'membership'
 ]
 
 MIDDLEWARE = [

@@ -29,6 +29,8 @@ urlpatterns = [
     path('store/', include('store.urls')),
     # сообщество - создание и просмотр постов
     path('community/', include('community.urls')),
+    # покупка абонементов
+    path('membership/', include('membership.urls')),
 
 
     path('accounts/', include('django.contrib.auth.urls')),

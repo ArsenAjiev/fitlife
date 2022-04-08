@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from store.models import *
+from membership.models import Membership
 from store.utils import cart_data
 from app.forms import UserRegisterForm
 from django.contrib.auth import login
@@ -64,7 +65,11 @@ def register(request):
             Customer.objects.create(user=request.user,
                                     name=form.cleaned_data.get('username'),
                                     email=form.cleaned_data.get('email'))
-            return redirect('core/index')
+            Membership.objects.create(user=request.user,
+                                      name=form.cleaned_data.get('username'),
+                                      email=form.cleaned_data.get('email'))
+
+            return redirect('core:index')
     else:
         form = UserRegisterForm()
     return render(request, 'registration/register.html', {'form': form})

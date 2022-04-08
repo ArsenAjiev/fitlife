@@ -1,0 +1,226 @@
+{% extends 'core/profile.html' %}
+{% load static %}
+
+
+
+{% block profile %}
+
+            <div class="col-lg-10 container-fluid">
+                   <div class="row">
+
+                            <h1><u> Активные абонементы</u></h1>
+                                      <br>
+                                        {% for item in my_orders %}
+                            {#            Если абонемент активирован и не использован#}
+                                        {% if item.activation and  not item.expired %}
+                                            <div class="col-md-4">
+                                                <div class="card mb-4 product-wap rounded-0">
+                                                    <div class="card-body" style="height: 80px">
+                                                         <p> {{ item.subscription.get_title_display }} </p>
+                                                    </div>
+
+
+                                                    <div class="card-header" style="height: 90px">
+                                                        <h4 class="my-0 font-weight-normal"> {{ item.subscription.description }} </h4>
+                                                    </div>
+
+                                                          {% if not item.is_limited %}
+
+                                                     <div class="card-header" style="height: 60px">
+                                                        <h6 class="my-0 font-weight-normal"> Количество занятий: <p> {{ item.quantity }}</p> </h6>
+                                                    </div>
+                                                          {% else %}
+                                                     <div class="card-header" style="height: 60px">
+                                                        <h4 class="my-0 font-weight-normal"> <p> Без ограничений </p>  </h4>
+                                                    </div>
+                                                          {% endif %}
+
+                                                     <div class="card-header" style="height: 60px">
+                                                        <h6 class="my-0 font-weight-normal"> Дата покупки: <p>{{ item.date_added }} </p> </h6>
+                                                    </div>
+
+                                                    <div class="card-header" style="height: 60px">
+                                                        <h6 class="my-0 font-weight-normal"> Цена: <p>{{ item.subscription.price}} </p> </h6>
+                                                    </div>
+
+
+                                                        {% if item.activation %}
+                                                    <div class="card-header" style="height: 60px">
+                                                        <h6 class="my-0 font-weight-normal"> Дата активации: <p>{{ item.date_activation }} </p>  </h6>
+                                                    </div>
+                                                        {% else %}
+                                                    <div class="card-header">
+                                                        <h6 class="my-0 font-weight-normal"> Подписка не активирована </h6>
+                                                    </div>
+                                                        {% endif %}
+
+
+                                                    {% if item.diff_date %}
+                                                    <div class="card-header" style="height: 130px">
+                                                        <h6 class="my-0 font-weight-normal"> Последний день посещения: <p>{{ item.paid_until }} </p> Осталось: <p>{{ item.diff_date }} </p>  </h6>
+                                                    </div>
+                                                    {% else %}
+                                                    <div class="card-header" style="height: 130px">
+                                                        <h6 class="my-0 font-weight-normal"> Количество оставшихся посещений: <p> {{ item.quantity }} </p> </h6>
+                                                    </div>
+                                                    {% endif %}
+
+                                                    <a href="{% url 'membership:delete_membership' item.pk %}">
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary"> Удалить абонемент</button>
+
+                                                    </a>
+
+                                                                    {% if not item.is_limited %}
+                                                            <a href="{% url 'membership:check_visit' item.pk %}">
+                                                                <button type="button" class="btn btn-sm btn-outline-secondary"> Отметить посещение</button>
+                                                            </a>
+                                                                    {% endif %}
+
+
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                   </div>
+
+                   <div class="row">
+
+                            <h1><u> Неактивные абонементы</u></h1>
+                                      <br>
+                                        {% for item in my_orders %}
+                            {#            Если абонемент активирован и не использован#}
+                                        {% if  not item.activation %}
+                                            <div class="col-md-4">
+                                                <div class="card mb-4 product-wap rounded-0">
+                                                    <div class="card-body" style="height: 80px">
+                                                         <p> {{ item.subscription.get_title_display }} </p>
+                                                    </div>
+
+
+                                                    <div class="card-header" style="height: 90px">
+                                                        <h4 class="my-0 font-weight-normal"> {{ item.subscription.description }} </h4>
+                                                    </div>
+
+                                                          {% if not item.is_limited %}
+
+                                                     <div class="card-header" style="height: 60px">
+                                                        <h6 class="my-0 font-weight-normal"> Количество занятий: <p> {{ item.quantity }}</p> </h6>
+                                                    </div>
+                                                          {% else %}
+                                                     <div class="card-header" style="height: 60px">
+                                                        <h4 class="my-0 font-weight-normal"> <p> Без ограничений </p>  </h4>
+                                                    </div>
+                                                          {% endif %}
+
+                                                     <div class="card-header" style="height: 60px">
+                                                        <h6 class="my-0 font-weight-normal"> Дата покупки: <p>{{ item.date_added }} </p> </h6>
+                                                    </div>
+
+                                                    <div class="card-header" style="height: 60px">
+                                                        <h6 class="my-0 font-weight-normal"> Цена: <p>{{ item.subscription.price}} </p> </h6>
+                                                    </div>
+
+
+                                                        {% if item.activation %}
+                                                    <div class="card-header" style="height: 60px">
+                                                        <h6 class="my-0 font-weight-normal"> Дата активации: <p>{{ item.date_activation }} </p>  </h6>
+                                                    </div>
+                                                        {% else %}
+                                                    <div class="card-header">
+                                                        <h6 class="my-0 font-weight-normal"> Подписка не активирована </h6>
+                                                    </div>
+                                                        {% endif %}
+
+
+                                                    {% if item.diff_date %}
+                                                    <div class="card-header" style="height: 130px">
+                                                        <h6 class="my-0 font-weight-normal"> Последний день посещения: <p>{{ item.paid_until }} </p> Осталось: <p>{{ item.diff_date }} </p>  </h6>
+                                                    </div>
+                                                    {% else %}
+                                                    <div class="card-header" style="height: 130px">
+                                                        <h6 class="my-0 font-weight-normal"> Количество оставшихся посещений: <p> {{ item.quantity }} </p> </h6>
+                                                    </div>
+                                                    {% endif %}
+
+                                                    <a href="{% url 'membership:activation' item.pk %}">
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary">  Активировать абонемент</button>
+                                                    </a>
+
+
+                                                    <a href="{% url 'membership:delete_membership' item.pk %}">
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary"> Удалить абонемент</button>
+                                                    </a>
+
+
+
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                   </div>
+
+                   <div class="row">
+
+                            <h1><u> Архив абонементов </u></h1>
+                                      <br>
+                                        {% for item in my_orders %}
+                            {#            Если абонемент активирован и не использован#}
+                                        {% if item.activation and item.expired %}
+                                            <div class="col-md-4">
+                                                <div class="card mb-4 product-wap rounded-0">
+                                                    <div class="card-body" style="height: 80px">
+                                                         <p> {{ item.subscription.get_title_display }} </p>
+                                                    </div>
+
+
+                                                    <div class="card-header" style="height: 90px">
+                                                        <h4 class="my-0 font-weight-normal"> {{ item.subscription.description }} </h4>
+                                                    </div>
+
+                                                          {% if not item.is_limited %}
+
+                                                     <div class="card-header" style="height: 60px">
+                                                        <h6 class="my-0 font-weight-normal"> Количество занятий: <p> {{ item.quantity }}</p> </h6>
+                                                    </div>
+                                                          {% else %}
+                                                     <div class="card-header" style="height: 60px">
+                                                        <h4 class="my-0 font-weight-normal"> <p> Без ограничений </p>  </h4>
+                                                    </div>
+                                                          {% endif %}
+
+                                                     <div class="card-header" style="height: 60px">
+                                                        <h6 class="my-0 font-weight-normal"> Дата покупки: <p>{{ item.date_added }} </p> </h6>
+                                                    </div>
+
+                                                    <div class="card-header" style="height: 60px">
+                                                        <h6 class="my-0 font-weight-normal"> Цена: <p>{{ item.subscription.price}} </p> </h6>
+                                                    </div>
+
+                                                    {% if item.expired %}
+                                                     <div class="card-header" style="height: 60px">
+                                                        <h6 class="my-0 font-weight-normal"> <p> Состояние абонемента: Использован</p> </h6>
+                                                    </div>
+                                                          {% else %}
+                                                     <div class="card-header" style="height: 60px">
+                                                        <h4 class="my-0 font-weight-normal"> <p> Состояние абонемента: Не использован </p>  </h4>
+                                                    </div>
+                                                          {% endif %}
+
+                                                    <a href="{% url 'membership:delete_membership' item.pk %}">
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary"> Удалить абонемент</button>
+                                                    </a>
+
+
+
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                   </div>
+
+
+
+            </div>
+
+
+{% endblock %}
