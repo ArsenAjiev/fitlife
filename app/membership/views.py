@@ -47,14 +47,6 @@ def my_subscription(request):
     return render(request, 'membership/my_subscriptions.html', context)
 
 
-def tariffs(request):
-    subscription = Subscription.objects.all()
-    context = {
-        "subscription": subscription
-    }
-    return render(request, 'core/tariffs.html', context)
-
-
 @login_required
 def add_membership(request, item_pk):
     membership = request.user.membership

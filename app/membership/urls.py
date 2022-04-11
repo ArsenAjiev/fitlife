@@ -7,7 +7,6 @@ urlpatterns = [
 
     # path('', index, name='index'),
     path('my_subscription/', my_subscription, name='my_subscription'),
-    path('tariffs/', tariffs, name='tariffs'),
     path('add_membership/<item_pk>/', add_membership, name='add_membership'),
     path('activation/<item_pk>/', activation, name='activation'),
     # path('deactivation/<item_pk>/', deactivation, name='deactivation'),

@@ -1,0 +1,27 @@
+{% extends 'core/profile.html' %}
+{% load static %}
+
+
+
+{% block profile %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-10">
+                <div style="padding: 20px">
+
+                            <h1 class="h2">Редактировать  пост</h1>
+                                {#    указать при загрузке изображения enctype="multipart/form-data" #}
+                                <form action="{% url 'community:edit_post' pk=post.pk %}" method="post" enctype="multipart/form-data" >
+                                {% csrf_token %}
+
+                                {{ form.as_p }}
+                                  <button type="submit" class=" btn-outline-success form-control"> Добавить пост</button>
+
+                                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

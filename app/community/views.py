@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from community.models import *
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from community.forms import PostForm, AddCommentForm
 from django.urls import reverse_lazy
 from django.http import HttpResponse
@@ -50,6 +50,19 @@ class CreatePost(CreateView):
     def form_valid(self, form):
         form.instance.author_id = self.request.user.id
         return super(CreatePost, self).form_valid(form)
+
+
+class UpdatePost(UpdateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'community/update_post.html'
+    success_url = reverse_lazy('community:main_page')
+    raise_exception = True
+
+    # добавляет в поле автор id текущего юзера автоматически
+    def form_valid(self, form):
+        form.instance.author_id = self.request.user.id
+        return super(UpdatePost, self).form_valid(form)
 
 
 def delete_post(request, post_pk):

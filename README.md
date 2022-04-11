@@ -125,8 +125,11 @@ python manage.py migrate
 ```shell
 python manage.py createsuperuser
 ```
-
-### Create  "Customer"  in admin interface (for superuser)
+```text
+!!! IMPORTANT!!
+Create  "Customer"  in admin interface (for superuser)
+Create  "Membership"  in admin interface (for superuser)
+```
 
 
 ### Create some products use management command
@@ -381,6 +384,62 @@ community/comm_main_page.html
         <button type="button" class="btn btn-outline-secondary" >Создать пост</button>
     </div>
 
+
+
+```
+### Update Tag
+```text
+решение проблемы изменения тегов при обновлении поста
+
+```
+```text
+
+from taggit.forms import TagWidget
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'text', 'image', 'tags']
+        exclude = ('author',)
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'tags': TagWidget(attrs={'class': 'form-control'}),
+            'text': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+            # важно при загрузке изображения!!!
+            'image': forms.FileInput(attrs={'class': 'input-image-control'})
+        }
+
+
+```
+
+
+
+
+
+
+# Test
+
+```text
+Что бы получать больше информации о тестах можно изменить значение параметра verbosity.
+Доступными значениями для verbosity являются  0, 1 (значение по умолчанию), 2 и 3
+```
+
+
+```shell
+
+python3 manage.py test --verbosity 2
+python3 manage.py test -v 2
+
+```
+
+```shell
+
+python3 manage.py test 
+python3 manage.py test tests
+python3 manage.py test tests.test_order -v 0
+
+# путь до модуля membership/tests/test_model.py
+python manage.py test membership.tests.test_model
 
 
 ```

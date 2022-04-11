@@ -13,5 +13,5 @@ urlpatterns = [
     path('my_posts/', my_posts, name='my_posts'),
     path('delete_comment/<comm_pk>/', delete_comment, name='delete_comment'),
     path('delete_post/<post_pk>/', delete_post, name='delete_post'),
-
+    path('edit_post/<int:pk>/', UpdatePost.as_view(), name='edit_post'),
     ]

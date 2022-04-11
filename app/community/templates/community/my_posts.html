@@ -19,7 +19,7 @@
 					<div style="flex:1.4"><img class="row-image" src="{{ item.image.url }}" style="margin-top: 8px; margin-left:10px"></div>
 					<div style="flex:2"><a class="text-decoration-none text-secondary" href="{{ item.get_absolute_url }}">{{ item.title }}</a></div>
 					<div style="flex:2"><p>{{ item.created | date:'Y.m.d  H:m' }}</p></div>
-                    <div style="flex:2"><p></p><a  class="btn btn-outline-success" href="#"> Редактировать пост </a></div>
+                    <div style="flex:2"><p></p><a  class="btn btn-outline-success" href="{% url 'community:edit_post' pk=item.pk %}"> Редактировать пост </a></div>
                     <div style="flex:2"><p></p><a  class="btn btn-outline-danger" href="{% url 'community:delete_post' item.pk %}"> Удалить пост </a></div>
 
 

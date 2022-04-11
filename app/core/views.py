@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from store.models import *
-from membership.models import Membership
+from membership.models import Membership, Subscription
 from store.utils import cart_data
 from app.forms import UserRegisterForm
 from django.contrib.auth import login
+
 
 
 # Главная страница проекта
@@ -11,8 +12,13 @@ def index(request):
     # объект cartItems нужен для отображения количества товаров в корзине на главной странице
     data = cart_data(request)
     cart_items = data['cart_items']
-    context = {"cart_items": cart_items}
+    subscription = Subscription.objects.all()[:3]
+    context = {
+        "cart_items": cart_items,
+        "subscription": subscription
+    }
     return render(request, 'core/index.html', context)
+
 
 
 # информация о сайте
@@ -38,7 +44,12 @@ def tariffs(request):
     # объект cartItems нужен для отображения количества товаров в корзине на главной странице
     data = cart_data(request)
     cart_items = data['cart_items']
-    context = {"cart_items": cart_items}
+    subscription = Subscription.objects.all()
+    context = {
+        "cart_items": cart_items,
+        "subscription": subscription
+
+    }
     return render(request, 'core/tariffs.html', context)
 
 
