@@ -44,16 +44,18 @@ To get this project up and running locally on your computer:
    python3 manage.py test 
    python3 manage.py createsuperuser 
 ```
+
+2. Open a browser to `http://127.0.0.1:8000/admin/` to open the admin site  
  ```text
-      1. Open a browser to `http://127.0.0.1:8000/admin/` to open the admin site     
+   
         - Create  "Customer"  in admin interface (for superuser)
         - Create  "Membership"  in admin interface (for superuser)
 ```
    
 ```shell
-      # 2. Create a few product for store use management command.
+      # Create test product for store use management command.
       python3 manage.py create
-      # 3. Create test subscription use management command
+      # Create test subscription use management command
       python3 manage.py create_sub
 ```
 ```shell
@@ -91,17 +93,18 @@ docker-compose up -d --build --force-recreate
 docker-compose exec app python3 manage.py createsuperuser
 ```
 
+2. Open a browser to `http://127.0.0.1:8000/admin/` to open the admin site
  ```text
-      1. Open a browser to `http://127.0.0.1:8000/admin/` to open the admin site     
+  
         - Create  "Customer"  in admin interface (for superuser)
         - Create  "Membership"  in admin interface (for superuser)
 ```
    
 ```shell
-      # 2. Create test product for store use management command.
+      # Create test product for store use management command.
       docker-compose exec app python3 manage.py create
       
-      # 3. Create test subscription use management command.
+      # Create test subscription use management command.
       docker-compose exec app python3 manage.py create_sub
 ```
 3. Open tab to `http://127.0.0.1:8080` to see the main site, or use other port in your settings.
