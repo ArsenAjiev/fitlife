@@ -51,8 +51,10 @@ To get this project up and running locally on your computer:
 ```
    
 ```shell
-      # 2. Create a few product for store.
-      python manage.py create
+      # 2. Create a few product for store use management command.
+      python3 manage.py create
+      # 3. Create test subscription use management command
+      python3 manage.py create_sub
 ```
 ```shell
       python3 manage.py runserver
@@ -96,8 +98,11 @@ docker-compose exec app python3 manage.py createsuperuser
 ```
    
 ```shell
-      # 2. Create a few product for store.
+      # 2. Create test product for store use management command.
       docker-compose exec app python3 manage.py create
+      
+      # 3. Create test subscription use management command.
+      docker-compose exec app python3 manage.py create_sub
 ```
 3. Open tab to `http://127.0.0.1:8080` to see the main site, or use other port in your settings.
 
