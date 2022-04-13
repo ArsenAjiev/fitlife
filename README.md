@@ -72,19 +72,6 @@ To get this project up and running locally on your computer:
 1. git clone https://github.com/ArsenAjiev/fitlife.git
 
 ```shell
-# clear ALL data !!! 
-docker system prune -a
-docker volume prune
-
-```
-```shell
-# show information 
-docker ps -a
-docker images
-docker volume ls
-
-```
-```shell
 #Run all at once
 docker-compose up -d --build --force-recreate
 ```
@@ -109,6 +96,21 @@ docker-compose exec app python3 manage.py createsuperuser
 ```
 3. Open tab to `http://127.0.0.1:8080` to see the main site, or use other port in your settings.
 
+
+## Useful commands for docker 
+```shell
+# clear ALL data !!! 
+docker system prune -a
+docker volume prune
+
+```
+```shell
+# show information 
+docker ps -a
+docker images
+docker volume ls
+
+```
 
 
 
