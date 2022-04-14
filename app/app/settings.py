@@ -145,7 +145,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static-user"
+    BASE_DIR / 'static-user'
 ]
 
 STATIC_ROOT = BASE_DIR / "files" / "static"
