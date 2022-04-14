@@ -31,13 +31,13 @@
 
                  {% if not item.is_limited %}
                      <div style="flex:1"><p></p>
-                         <a  class="btn btn-outline-success" style="margin-left: 10px" href="{% url 'membership:check_visit' item.pk %}"> Отметить </a>
+                         <a  class="btn btn-outline-success" style="margin-left: 10px" href="{% url 'membership:check_visit' item.pk %}"> Отметить посещение </a>
                      </div>
                 {% else %}
-                      <div style="flex:1"><p style="margin-left: 10px"> Null </p></div>
+                      <div style="flex:1"><p style="margin-left: 10px">  </p></div>
                 {% endif %}
 
-                    <div style="flex:1"><p></p><a  class="btn btn-outline-danger" href="{% url 'membership:delete_membership' item.pk %}"> Удалить  </a></div>
+                    <div style="flex:1"><p></p><a  class="btn btn-outline-danger" href="{% url 'membership:delete_membership' item.pk %}"> Удалить абонемент  </a></div>
 
 				</div>
                  {% endif %}
@@ -96,12 +96,9 @@
 				<div class="cart-row">
 					<div style="flex:2">{{ item.subscription.get_title_display }}</div>
 
-                 {% if item.diff_date %}
-                    <div style="flex:2"> <p>Последний день посещения: {{ item.paid_until }}<p>
-                        Осталось: {{ item.diff_date }} </p></div>
-                 {% else %}
-                    <div style="flex:2">Количество оставшихся посещений: <p>{{ item.quantity }} </p> </div>
-                 {% endif %}
+
+                    <div style="flex:2"> </p> </div>
+
 
                  {% if item.expired %}
 				    <div style="flex:2">Абонемент использован</div>

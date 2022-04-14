@@ -52,10 +52,12 @@ def add_membership(request, item_pk):
     membership = request.user.membership
     subscription = get_object_or_404(Subscription, pk=item_pk)
     # если абонемент не лимитируемый, то кол-во посещений это первое число CHOIOSE "4t", преобразованное к int.
-    if not subscription.is_limited:
-        quantity = int(subscription.title[0])
+    if subscription.title == '12t':
+        quantity = 12
+    elif subscription.title == '8t':
+        quantity = 8
     else:
-        quantity = 0
+        quantity = 4
     print(quantity)
 
     Order.objects.create(
