@@ -7,7 +7,7 @@ def cookie_cart(request):
         cart = json.loads(request.COOKIES['cart'])
     except:
         cart = {}
-    print('cart_view', cart)
+    # print('cart_view', cart)
     items = []
     order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping': False}
     cart_items = order['get_cart_items']
@@ -42,7 +42,7 @@ def cart_data(request):
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
         cart_items = order.get_cart_items
-        print(customer)
+        # print(customer)
     else:
         cookieData = cookie_cart(request)
         cart_items = cookieData['cart_items']
