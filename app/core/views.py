@@ -84,3 +84,13 @@ def register(request):
     else:
         form = UserRegisterForm()
     return render(request, 'registration/register.html', {'form': form})
+
+
+
+# информация о команде
+def our_command(request):
+    # объект cartItems нужен для отображения количества товаров в корзине на главной странице
+    data = cart_data(request)
+    cart_items = data['cart_items']
+    context = {"cart_items": cart_items}
+    return render(request, 'core/our_command.html', context)

@@ -11,5 +11,6 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('profile/', profile, name='profile'),
     path('tariffs/', tariffs, name='tariffs'),
+    path('our_command/', our_command, name='our_command'),
 
 ]

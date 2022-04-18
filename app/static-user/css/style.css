@@ -113,3 +113,8 @@ content: "№ " counter(heading) ". "; /* Выводим текст перед �
 .about_color {
 	background-color: rgba(27, 138, 48, 0.69);
 }
+
+
+.our_command_color {
+	background-color: rgba(138, 231, 147, 0.69);
+}
