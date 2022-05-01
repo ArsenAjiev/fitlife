@@ -113,5 +113,25 @@ docker volume ls
 ```
 
 
+1. Home
+
+   ![](./app/static-user/screenshot/home.png)
+   
+2. Shop
+
+   ![](./app/static-user/screenshot/shop.png)
+
+3. Blog - (community) 
+
+   ![](./app/static-user/screenshot/blog.png)
+
+4. Blog - (single post) 
+
+   ![](./app/static-user/screenshot/blog_single.png)
+
+5. Membership
+
+   ![](./app/static-user/screenshot/membersip.png)
+
 
 
