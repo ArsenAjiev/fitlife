@@ -6,7 +6,7 @@ Source link: https://github.com/ArsenAjiev/fitlife
 
 Requirements:
 
-    Python 3.8, PostgreSQL 12, Django 4, 
+    Python 3.9, PostgreSQL 12, Django 4, 
 
 
 
@@ -37,7 +37,7 @@ To get this project up and running locally on your computer:
 1. git clone https://github.com/ArsenAjiev/fitlife.git
 
 ```shell
-   pip3 install -r requirements.txt
+   pip install -r requirements.txt
    python3 manage.py makemigrations
    python3 manage.py migrate
    python3 manage.py collectstatic
