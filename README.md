@@ -111,6 +111,21 @@ docker images
 docker volume ls
 
 ```
+```text
+if use windows
+
+Replacing CRLF with LF using Notepad++
+
+Notepad++'s Find/Replace feature handles this requirement quite nicely. Simply bring up the Replace dialogue (CTRL+H),
+select Extended search mode (ALT+X), search for “\r\n” and replace with “\n”:
+Hit Replace All (ALT+A)
+Rebuild and run the docker image should solve your problem.
+
+
+
+```
+
+
 
 
 1. Home

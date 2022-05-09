@@ -35,7 +35,7 @@ services:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
     ports:
-       - 8080:80
+       - 80:80
     volumes:
       - static-files:/app/static
       - media-files:/app/media
